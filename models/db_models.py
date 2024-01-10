@@ -14,7 +14,6 @@ class Author(Base):
     books = relationship('Book', back_populates='author')
 
 
-# Модель данных для таблицы "Книги"
 class Book(Base):
     __tablename__ = 'books'
 

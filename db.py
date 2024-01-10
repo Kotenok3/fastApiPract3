@@ -3,7 +3,6 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from models.db_models import Base, Author, Book
 from config import settings
 
-url = "postgresql+asyncpg://postgres:9654@localhost:5432/dbname"
 engine = create_async_engine(settings.POSTGRES_DATABASE_URL, echo=True)
 
 

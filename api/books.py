@@ -28,8 +28,8 @@ async def get_book(book_id: int, db: AsyncSession = Depends(get_session)):
 
 @bookRouter.post("/", response_model=SimpleBook, status_code=status.HTTP_201_CREATED)
 async def create_book(item: SimpleBook, db: AsyncSession = Depends(get_session)):
+    new_book = Book(title=item.title, release_year=item.release_year, author_id=item.author_id)
     try:
-        new_book = Book(title=item.title, release_year=item.release_year, author_id=item.author_id)
         if new_book is None:
             raise HTTPException(status_code=404, detail="Объект не определён")
         db.add(new_book)

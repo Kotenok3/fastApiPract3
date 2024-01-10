@@ -41,8 +41,8 @@ async def get_author(id: int, db: AsyncSession = Depends(get_session)):
 
 @authorRouter.post("/", response_model=SimpleAuthor, status_code=status.HTTP_201_CREATED)
 async def create_author(item: SimpleAuthor, db: AsyncSession = Depends(get_session)):
+    new_author = Author(name=item.name, birth_year=item.birth_year)
     try:
-        new_author = Author(name=item.name, birth_year=item.birth_year)
         if new_author is None:
             raise HTTPException(status_code=404, detail="Объект не определён")
         db.add(new_author)

@@ -1,12 +1,8 @@
-from fastapi import FastAPI, Depends
-from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select
+from fastapi import FastAPI
 from datetime import datetime
-from starlette.responses import JSONResponse
 from api.author import authorRouter
 from api.books import bookRouter
-from models.db_models import Author
-from db import create_tables, get_session, db_init
+from db import create_tables, db_init
 
 create_tables()
 db_init()
